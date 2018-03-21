@@ -1,4 +1,4 @@
-FROM centos
+FROM registry.access.redhat.com/rhel7
 
 RUN echo "multilib_policy=best" >> /etc/yum.conf
 RUN yum  -y update && \
