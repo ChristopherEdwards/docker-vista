@@ -23,8 +23,6 @@ GREP_EXECUTABLE:FILEPATH=/bin/grep
 GTM_DIST:PATH=$ENV{gtm_dist}
 #Command to build the project
 MAKECOMMAND:STRING=/usr/bin/make -i
-#Path to a program.
-PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python
 #Path to scp command, used by CTest for submitting results to
 # a Dart server
 SCPCOMMAND:FILEPATH=/usr/bin/scp

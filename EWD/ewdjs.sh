@@ -128,6 +128,7 @@ su $instance -c "source $basedir/etc/env && mkdir $basedir/qewd"
 
 # Install required node modules
 cd $basedir/qewd
+su $instance -c "source $basedir/.nvm/nvm.sh && source $basedir/etc/env && nvm use $nodever && npm explore npm -g -- npm install node-gyp@latest >> $basedir/log/nodemInstall.log"
 su $instance -c "source $basedir/.nvm/nvm.sh && source $basedir/etc/env && nvm use $nodever && npm install --quiet nodem >> $basedir/log/nodemInstall.log"
 su $instance -c "source $basedir/.nvm/nvm.sh && source $basedir/etc/env && nvm use $nodever && npm install --quiet qewd >> $basedir/log/qewdInstall.log"
 su $instance -c "source $basedir/.nvm/nvm.sh && source $basedir/etc/env && nvm use $nodever && npm install --quiet qewd-monitor >> $basedir/log/qewdMonitorInstall.log"

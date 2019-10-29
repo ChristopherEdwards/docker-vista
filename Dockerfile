@@ -1,23 +1,21 @@
-FROM centos:7
+FROM centos:8
 
 RUN echo "multilib_policy=best" >> /etc/yum.conf
-RUN yum update  -y && \
-    yum install -y \
+RUN yum update --allowerasing -y && \
+    yum install --allowerasing -y \
                    coreutils \
+                   ncurses-compat-libs \
                    util-linux \
                    gcc-c++ \
                    git \
                    xinetd \
                    perl \
                    curl \
-                   python \
                    python3 \
                    openssh-server \
                    openssh-clients \
                    expect \
                    man \
-                   python-argparse \
-                   sshpass \
                    wget \
                    make \
                    cmake \
@@ -40,7 +38,6 @@ RUN yum update  -y && \
                    epel-release \
                    || true && \
     yum install -y http://libslack.org/daemon/download/daemon-0.6.4-1.i686.rpm > /dev/null && \
-    package-cleanup --cleandupes && \
     yum  -y clean all && \
     rm -rf /var/cache/yum
 
