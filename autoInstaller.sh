@@ -296,42 +296,43 @@ test -d /home/$instance/g &&
 # Bootstrap does all the stuff that is normally done by the Dockerfile
 if $bootstrap; then
     echo "Updating operating system"
-    yum update -y > /dev/null
-    yum install -y \
-                       coreutils \
-                       util-linux \
-                       gcc-c++ \
-                       git \
-                       xinetd \
-                       perl \
-                       curl \
-                       python \
-                       openssh-server \
-                       openssh-clients \
-                       expect \
-                       man \
-                       python-argparse \
-                       sshpass \
-                       wget \
-                       make \
-                       cmake \
-                       dos2unix \
-                       which \
-                       file \
-                       unzip \
-                       net-tools \
-                       java-devel \
-                       libicu \
-                       libicu-devel \
-                       recode \
-                       bzip2 \
-                       lsof \
-                       openssl \ 
-                       gzip \
-                       vim \
-                       bind-utils \
-                       perl-Digest-SHA \
-                       > /dev/null
+    yum update --allowerasing -y && \
+    yum install --allowerasing -y \
+                   coreutils \
+                   ncurses-compat-libs \
+                   util-linux \
+                   gcc-c++ \
+                   git \
+                   xinetd \
+                   perl \
+                   curl \
+                   python3 \
+                   openssh-server \
+                   openssh-clients \
+                   expect \
+                   man \
+                   wget \
+                   make \
+                   cmake \
+                   dos2unix \
+                   which \
+                   file \
+                   unzip \
+                   net-tools \
+                   java-devel \
+                   libicu \
+                   libicu-devel \
+                   recode \
+                   bzip2 \
+                   lsof \
+                   openssl \
+                   gzip \
+                   vim \
+                   bind-utils \
+                   perl-Digest-SHA \
+                   epel-release \
+                   initscripts \
+                   || true && \
     yum install -y http://libslack.org/daemon/download/daemon-0.6.4-1.i686.rpm > /dev/null
     package-cleanup --cleandupes
     yum  -y clean all

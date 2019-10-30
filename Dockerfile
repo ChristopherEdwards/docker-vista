@@ -36,6 +36,7 @@ RUN yum update --allowerasing -y && \
                    bind-utils \
                    perl-Digest-SHA \
                    epel-release \
+                   initscripts \
                    || true && \
     yum install -y http://libslack.org/daemon/download/daemon-0.6.4-1.i686.rpm > /dev/null && \
     yum  -y clean all && \
@@ -64,7 +65,7 @@ ADD ./*.sh /opt/vista/
 
 ARG instance=osehra
 ENV instance_name=$instance
-ARG flags="-y -b -e -m -p ./Common/ovydbPostInstall.sh"
+ARG flags="-y -t -b -e -m -p ./Common/ovydbPostInstall.sh"
 ARG entry="/home"
 ENV entry_path="${entry}/${instance_name}"
 ENV install_flags="$flags -i ${instance_name}"
